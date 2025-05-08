@@ -19,8 +19,8 @@ export class EmployeeApiService {
     });
   }
 
-  public getEmployeeById(): Observable<EmployeeModel> {
+  public getEmployeeById(id: string): Observable<EmployeeModel> {
     //GET /employees/{id}
-    return this.httpClient.get<EmployeeModel>('');
+    return this.httpClient.get<EmployeeModel>(`${id}`);
   }
 }

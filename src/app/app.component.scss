@@ -4,7 +4,7 @@
 }
 
 .content {
-  min-height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height));
   padding: 100px 120px;
   background-color: var(--main-bg-color);
 }

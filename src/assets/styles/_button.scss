@@ -1,0 +1,15 @@
+.app-button {
+  padding: 12px 38px;
+  border: none;
+  border-radius: 24px;
+  outline: none;
+  background-color: var(--brand-color);
+  color: var(--dark-color);
+  font-size: 16px;
+  font-weight: 600;
+
+  &.disabled {
+    background-color: var(--forth-color);
+    pointer-events: none;
+  }
+}

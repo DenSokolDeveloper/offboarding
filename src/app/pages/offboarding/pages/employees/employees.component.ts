@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Sort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 
 import { TableComponent } from '../../../../core/components/table/table.component';
-import { TableColumnModel } from '../../../../core/models';
+import { EmployeeModel, TableColumnModel } from '../../../../core/models';
 import { OffboardingService } from '../../services/offboarding.service';
 
 import { EmployeesDisplayedColumns } from './constants';
@@ -26,6 +27,7 @@ import { EmployeesDisplayedColumns } from './constants';
 export class EmployeesComponent implements OnInit {
   private offboardingService = inject(OffboardingService);
   private destroyRef = inject(DestroyRef);
+  private router = inject(Router);
 
   public filters = this.offboardingService.filters;
   public employees = this.offboardingService.filteredEmployees;
@@ -48,6 +50,10 @@ export class EmployeesComponent implements OnInit {
     this.offboardingService.updateFilters({
       [$event.active]: $event.direction,
     });
+  }
+
+  rowSelected(employee: EmployeeModel): void {
+    this.router.navigate(['employee', employee.id]);
   }
 
   private initEmployees(): void {

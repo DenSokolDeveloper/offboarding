@@ -1,0 +1,52 @@
+.mat-mdc-table {
+  & .mat-mdc-header-cell {
+    border: none;
+    background-color: var(--secondary-color) !important;
+
+    &:first-child {
+      border-radius: 12px 0 0 12px;
+    }
+
+    &:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+
+    &:only-child {
+      border-radius: 12px;
+    }
+
+    & .mat-sort-header-content {
+      white-space: nowrap;
+    }
+
+    &.mat-column-equipments {
+      width: 30%;
+    }
+  }
+
+  & .mat-mdc-cell {
+    border-bottom: 1px solid var(--forth-color);
+    background-color: var(--white-color) !important;
+
+    &.mat-column-name {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+
+  & .mat-mdc-row {
+    cursor: pointer;
+  }
+
+  & .mat-mdc-header-row {
+    position: sticky;
+    top: -47px;
+    z-index: 1;
+  }
+
+  + mat-paginator {
+    position: sticky;
+    bottom: -24px;
+    z-index: 1;
+  }
+}

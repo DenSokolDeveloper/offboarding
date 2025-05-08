@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { OffboardingComponent } from './offboarding.component';
-import { OffboardingService } from './services/offboarding.service';
 
 const children: Routes = [
   {
@@ -39,6 +38,5 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
-  providers: [OffboardingService],
 })
 export class OffboardingModule {}

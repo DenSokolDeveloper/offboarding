@@ -52,8 +52,10 @@ export class TableComponent<T> implements AfterViewInit {
 
   displayedColumns = input<TableColumnModel[]>([]);
   data = input<T[]>([]);
+  showPagination = input<boolean>(true);
 
   sortChange = output<Sort>();
+  rowSelected = output<T>();
 
   displayedColumnsStrings = computed(() =>
     this.displayedColumns().map((el) => el.id),
@@ -77,6 +79,8 @@ export class TableComponent<T> implements AfterViewInit {
   }
 
   private initPaginator(): void {
-    this.dataSource.paginator = this.paginator();
+    if (this.showPagination()) {
+      this.dataSource.paginator = this.paginator();
+    }
   }
 }

@@ -6,7 +6,9 @@ import { EmployeeModel, SortDirection } from '../../../core/models';
 import { EmployeeApiService } from '../../../core/services';
 import { EmployeesFilters } from '../interfaces';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class OffboardingService {
   private employeeApiService = inject(EmployeeApiService);
 
@@ -81,9 +83,15 @@ export class OffboardingService {
     );
   }
 
-  public getEmployeeById(): Observable<EmployeeModel> {
-    return this.employeeApiService.getEmployeeById().pipe(
-      catchError(() => of(employeesMocks(1)[0])),
+  public getEmployeeById(id: string): Observable<EmployeeModel> {
+    const mockUser = (
+      this.filteredEmployees().length
+        ? this.filteredEmployees()
+        : employeesMocks()
+    ).find((el) => el.id === id);
+
+    return this.employeeApiService.getEmployeeById(id).pipe(
+      catchError(() => of(mockUser)),
       tap((employee) => this.selectedEmployee.set(employee)),
     );
   }

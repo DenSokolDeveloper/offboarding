@@ -1,0 +1,41 @@
+@let user = currentUser();
+
+<div class="employee-details">
+  <div class="employee-details__back-button" (click)="goBack()">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Back
+  </div>
+
+  <div class="employee-details-header">
+    <h3 class="employee-details__title">{{ user.name }}</h3>
+
+    <button class="app-button" (click)="openOffboardModal()">Offboard</button>
+  </div>
+
+  <div class="employee-details__subtitle employee-details__subtitle--small">
+    Employee Details
+  </div>
+
+  <div class="employee-details-grid">
+    <div class="employee-details-block">
+      <h5 class="employee-details-block__title">Full Name</h5>
+      <p class="employee-details-block__text">{{ user.name }}</p>
+    </div>
+    <div class="employee-details-block">
+      <h5 class="employee-details-block__title">Email</h5>
+      <p class="employee-details-block__text">{{ user.email }}</p>
+    </div>
+    <div class="employee-details-block">
+      <h5 class="employee-details-block__title">Department</h5>
+      <p class="employee-details-block__text">{{ user.department }}</p>
+    </div>
+  </div>
+
+  <div class="employee-details__subtitle">Equipment</div>
+
+  <app-table
+    [data]="user.equipments"
+    [displayedColumns]="[{ id: 'name', name: 'Item' }]"
+    [showPagination]="false"
+  ></app-table>
+</div>
