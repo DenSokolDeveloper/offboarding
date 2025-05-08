@@ -27,6 +27,8 @@
       "dom"
     ],
     "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {

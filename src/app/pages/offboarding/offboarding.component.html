@@ -1,0 +1,23 @@
+<h1 class="offboarding__title">Offboarding</h1>
+
+<div class="offboarding-tabs">
+  <mat-tab-group
+    [selectedIndex]="selectedTabIndex"
+    (selectedIndexChange)="onTabChange($event)"
+  >
+    @for (tab of tabs; track tab.id) {
+      <mat-tab [label]="tab.name"></mat-tab>
+    }
+  </mat-tab-group>
+
+  <div class="offboarding__search">
+    <app-input
+      iconName="search"
+      placeholder="Search"
+      [control]="searchControl"
+    />
+  </div>
+</div>
+<div class="offboarding-content">
+  <router-outlet />
+</div>

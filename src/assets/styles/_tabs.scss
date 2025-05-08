@@ -1,0 +1,32 @@
+.mat-mdc-tab-group {
+  box-shadow: 0px -2px 30px -15px rgba(0, 0, 0, 1);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+
+  & .mdc-tab {
+    min-width: 200px;
+    background-color: var(--third-color);
+
+    & .mdc-tab__text-label {
+      color: var(--forth-color);
+    }
+
+    &--active {
+      background-color: var(--white-color);
+
+      & .mdc-tab__text-label {
+        color: var(--brand-color) !important;
+      }
+    }
+
+    & .mdc-tab-indicator {
+      left: 5px;
+      right: 5px;
+      width: initial;
+
+      &__content--underline {
+        border-color: var(--brand-color) !important;
+      }
+    }
+  }
+}

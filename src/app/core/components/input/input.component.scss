@@ -1,0 +1,34 @@
+.app-input {
+  &-wrapper {
+    height: 40px;
+    padding: 0 8px 0 6px;
+    border: 1px solid var(--forth-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background-color: var(--white-color);
+
+    &:has(.app-input__input:focus) {
+      border-color: var(--brand-color);
+      & .app-input__icon {
+        color: var(--dark-color);
+      }
+    }
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--dark-color);
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    color: var(--forth-color);
+  }
+}

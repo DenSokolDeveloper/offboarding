@@ -50,7 +50,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/consistent-type-definitions": "error",
       "@typescript-eslint/dot-notation": "off",
       "@typescript-eslint/explicit-member-accessibility": "off",
-      "@typescript-eslint/member-ordering": "error",
+      "@typescript-eslint/member-ordering": "off",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-empty-interface": "error",

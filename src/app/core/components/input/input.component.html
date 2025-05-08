@@ -1,0 +1,12 @@
+<div class="app-input-wrapper">
+  <input
+    type="text"
+    class="app-input__input"
+    [placeholder]="placeholder()"
+    [formControl]="control()"
+  />
+
+  @if (iconName()) {
+    <mat-icon class="app-input__icon">{{ iconName() }}</mat-icon>
+  }
+</div>
