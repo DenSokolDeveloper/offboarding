@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h2 class="modal-header__title">Offboard</h2>
+  <mat-icon class="modal-header__icon" (click)="close()">close</mat-icon>
+</div>
+<div class="modal-body">
+  @let controls = formGroup.controls;
+
+  <app-input [control]="controls.receiver" placeholder="Reciever*"></app-input>
+  <app-input [control]="controls.email" placeholder="Email*"></app-input>
+  <app-input [control]="controls.phone" placeholder="Phone*"></app-input>
+  <app-input
+    [control]="controls.streetLine1"
+    placeholder="Street line*"
+  ></app-input>
+  <div class="row">
+    <app-input [control]="controls.city" placeholder="City*"></app-input>
+    <app-input
+      [control]="controls.postalCode"
+      placeholder="Postal code*"
+    ></app-input>
+  </div>
+  <app-input [control]="controls.country" placeholder="Country*"></app-input>
+  <app-input [control]="controls.notes" placeholder="Notes*"></app-input>
+</div>
+<div class="modal-footer">
+  <button class="app-button app-button--secondary" (click)="close()">
+    Cancel
+  </button>
+
+  <button class="app-button" [disabled]="formGroup.invalid" (click)="submit()">
+    Confirm
+  </button>
+</div>

@@ -1,9 +1,17 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, filter, Observable, of, tap } from 'rxjs';
 
 import { employeesMocks } from '../../../core/mocks';
-import { EmployeeModel, SortDirection } from '../../../core/models';
-import { EmployeeApiService } from '../../../core/services';
+import {
+  EmployeeModel,
+  EmployeeStatus,
+  OffboardReqModel,
+  SortDirection,
+} from '../../../core/models';
+import {
+  EmployeeApiService,
+  OffboardingApiService,
+} from '../../../core/services';
 import { EmployeesFilters } from '../interfaces';
 
 @Injectable({
@@ -11,6 +19,7 @@ import { EmployeesFilters } from '../interfaces';
 })
 export class OffboardingService {
   private employeeApiService = inject(EmployeeApiService);
+  private offboardingApiService = inject(OffboardingApiService);
 
   public filters = signal<EmployeesFilters>({});
   public employees = signal<EmployeeModel[]>([]);
@@ -73,9 +82,21 @@ export class OffboardingService {
     this.filteredEmployees.set(data.slice(start, end));
   }
 
+  public changeEmployeeStatus(
+    employeeId: string,
+    status: EmployeeStatus,
+  ): void {
+    let employees = this.employees();
+    employees = employees.map((employee) =>
+      employee.id === employeeId ? { ...employee, status } : employee,
+    );
+    this.employees.set([...employees]);
+  }
+
   public getEmployees(filters: EmployeesFilters): Observable<EmployeeModel[]> {
     return this.employeeApiService.getEmployees(filters).pipe(
       catchError(() => of(employeesMocks())),
+      filter(() => !this.employees().length),
       tap((employees) => {
         this.employees.set(employees);
         this.filteredEmployees.set(employees);
@@ -94,5 +115,11 @@ export class OffboardingService {
       catchError(() => of(mockUser)),
       tap((employee) => this.selectedEmployee.set(employee)),
     );
+  }
+
+  public postOffboard(payload: OffboardReqModel): Observable<boolean> {
+    return this.offboardingApiService
+      .postOffboard(payload)
+      .pipe(catchError(() => of(true)));
   }
 }

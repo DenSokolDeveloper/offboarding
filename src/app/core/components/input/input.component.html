@@ -1,4 +1,7 @@
-<div class="app-input-wrapper">
+<div
+  class="app-input-wrapper"
+  [class.error]="control().errors && control().touched"
+>
   <input
     type="text"
     class="app-input__input"
@@ -10,3 +13,10 @@
     <mat-icon class="app-input__icon">{{ iconName() }}</mat-icon>
   }
 </div>
+@if (control().errors && control().touched) {
+  <div class="app-input__error">
+    @for (errorObj of control().errors | keyvalue; track $index) {
+      {{ errorsMapper[errorObj.key] }}
+    }
+  </div>
+}

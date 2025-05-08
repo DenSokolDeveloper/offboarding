@@ -1,0 +1,15 @@
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+  width: 600px !important;
+  max-width: 600px !important;
+}
+
+.mdc-dialog__container {
+  width: 600px !important;
+  max-width: 600px !important;
+  max-height: 90vh !important;
+  min-height: 205px !important;
+  padding: 0;
+  border-radius: 12px;
+  background-color: var(--white-color);
+  overflow-y: hidden;
+}

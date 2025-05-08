@@ -1,4 +1,4 @@
-@let user = currentUser();
+@let employee = currentEmployee();
 
 <div class="employee-details">
   <div class="employee-details__back-button" (click)="goBack()">
@@ -7,7 +7,7 @@
   </div>
 
   <div class="employee-details-header">
-    <h3 class="employee-details__title">{{ user.name }}</h3>
+    <h3 class="employee-details__title">{{ employee.name }}</h3>
 
     <button class="app-button" (click)="openOffboardModal()">Offboard</button>
   </div>
@@ -19,22 +19,22 @@
   <div class="employee-details-grid">
     <div class="employee-details-block">
       <h5 class="employee-details-block__title">Full Name</h5>
-      <p class="employee-details-block__text">{{ user.name }}</p>
+      <p class="employee-details-block__text">{{ employee.name }}</p>
     </div>
     <div class="employee-details-block">
       <h5 class="employee-details-block__title">Email</h5>
-      <p class="employee-details-block__text">{{ user.email }}</p>
+      <p class="employee-details-block__text">{{ employee.email }}</p>
     </div>
     <div class="employee-details-block">
       <h5 class="employee-details-block__title">Department</h5>
-      <p class="employee-details-block__text">{{ user.department }}</p>
+      <p class="employee-details-block__text">{{ employee.department }}</p>
     </div>
   </div>
 
   <div class="employee-details__subtitle">Equipment</div>
 
   <app-table
-    [data]="user.equipments"
+    [data]="employee.equipments"
     [displayedColumns]="[{ id: 'name', name: 'Item' }]"
     [showPagination]="false"
   ></app-table>

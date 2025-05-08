@@ -7,9 +7,16 @@
   color: var(--dark-color);
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 
-  &.disabled {
-    background-color: var(--forth-color);
+  &--secondary {
+    background-color: transparent;
+    color: var(--forth-color);
+  }
+
+  &:disabled {
+    background-color: var(--third-color);
     pointer-events: none;
+    cursor: initial;
   }
 }
